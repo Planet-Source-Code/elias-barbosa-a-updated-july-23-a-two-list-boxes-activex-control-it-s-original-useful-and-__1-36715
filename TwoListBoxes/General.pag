@@ -1,0 +1,200 @@
+VERSION 5.00
+Begin VB.PropertyPage General 
+   Caption         =   "General"
+   ClientHeight    =   4680
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   7005
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   4680
+   ScaleWidth      =   7005
+   Begin VB.CheckBox chkCaptionBold 
+      Caption         =   "CaptionBold"
+      Height          =   285
+      Left            =   120
+      TabIndex        =   14
+      Top             =   1800
+      Width           =   1260
+   End
+   Begin VB.CheckBox chkEnabled 
+      Caption         =   "Enabled"
+      Height          =   285
+      Left            =   120
+      TabIndex        =   6
+      Top             =   3720
+      Width           =   1245
+   End
+   Begin VB.CheckBox chkSaveLists 
+      Caption         =   "SaveLists"
+      Height          =   285
+      Left            =   120
+      TabIndex        =   5
+      Top             =   2760
+      Width           =   1245
+   End
+   Begin VB.CheckBox chkAutoConnect 
+      Caption         =   "AutoConnect"
+      Height          =   285
+      Left            =   120
+      TabIndex        =   4
+      Top             =   3240
+      Width           =   1380
+   End
+   Begin VB.TextBox txtCaption2 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   3
+      Top             =   1320
+      Width           =   2580
+   End
+   Begin VB.TextBox txtCaption1 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   1
+      Top             =   720
+      Width           =   2580
+   End
+   Begin VB.Label Label2 
+      BackStyle       =   0  'Transparent
+      Caption         =   "If the CaptionBold property is set to True, the Titles above the two ListBoxes will have their font set to Bold."
+      Height          =   615
+      Left            =   1440
+      TabIndex        =   15
+      Top             =   1800
+      Width           =   5415
+   End
+   Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The following properties are associated with the Control's Behavior."
+      Height          =   255
+      Left            =   120
+      TabIndex        =   13
+      Top             =   2400
+      Width           =   5175
+   End
+   Begin VB.Label lblTitle 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The following properties are associated with the Control's Appearance."
+      Height          =   255
+      Left            =   120
+      TabIndex        =   12
+      Top             =   120
+      Width           =   5175
+   End
+   Begin VB.Label lblEnabledC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "If the Enabled property is set to False, the ListBoxes are going to be disabled."
+      Height          =   495
+      Left            =   1440
+      TabIndex        =   11
+      Top             =   3720
+      Width           =   5415
+   End
+   Begin VB.Label lblAutoConnectC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "If the AutoConnect property is set to True, the control will connect to the specified database as soon as it is loaded."
+      Height          =   495
+      Left            =   1440
+      TabIndex        =   10
+      Top             =   3240
+      Width           =   5415
+   End
+   Begin VB.Label lblSalesListC 
+      BackStyle       =   0  'Transparent
+      Caption         =   $"General.pgx":0000
+      Height          =   615
+      Left            =   1440
+      TabIndex        =   9
+      Top             =   2760
+      Width           =   5415
+   End
+   Begin VB.Label lblCaption2C 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The Caption2 property will determine the Title that will appear right on top of the Right ListBox."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   8
+      Top             =   1320
+      Width           =   3855
+   End
+   Begin VB.Label lblCaption1C 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The Caption1 property will determine the Title that will appear right on top of the Left ListBox."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   7
+      Top             =   720
+      Width           =   3975
+   End
+   Begin VB.Label lblCaption2 
+      Caption         =   "Caption2:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   2
+      Top             =   1080
+      Width           =   765
+   End
+   Begin VB.Label lblCaption1 
+      Caption         =   "Caption1:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   0
+      Top             =   480
+      Width           =   780
+   End
+End
+Attribute VB_Name = "General"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Private Sub chkCaptionBold_Click()
+    Changed = True
+End Sub
+
+
+Private Sub chkEnabled_Click()
+    Changed = True
+End Sub
+
+
+Private Sub chkSaveLists_Click()
+    Changed = True
+End Sub
+
+
+Private Sub chkAutoConnect_Click()
+    Changed = True
+End Sub
+
+
+Private Sub txtCaption2_Change()
+    Changed = True
+End Sub
+
+
+Private Sub txtCaption1_Change()
+    Changed = True
+End Sub
+
+
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).CaptionBold = (chkCaptionBold.Value = vbChecked)
+    SelectedControls(0).Enabled = (chkEnabled.Value = vbChecked)
+    SelectedControls(0).SaveLists = (chkSaveLists.Value = vbChecked)
+    SelectedControls(0).AutoConnect = (chkAutoConnect.Value = vbChecked)
+    SelectedControls(0).Caption2 = txtCaption2.Text
+    SelectedControls(0).Caption1 = txtCaption1.Text
+End Sub
+
+
+Private Sub PropertyPage_SelectionChanged()
+    chkCaptionBold.Value = (SelectedControls(0).CaptionBold And vbChecked)
+    chkEnabled.Value = (SelectedControls(0).Enabled And vbChecked)
+    chkSaveLists.Value = (SelectedControls(0).SaveLists And vbChecked)
+    chkAutoConnect.Value = (SelectedControls(0).AutoConnect And vbChecked)
+    txtCaption2.Text = SelectedControls(0).Caption2
+    txtCaption1.Text = SelectedControls(0).Caption1
+End Sub
+
+
