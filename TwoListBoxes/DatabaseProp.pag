@@ -1,0 +1,745 @@
+VERSION 5.00
+Begin VB.PropertyPage DatabaseProp 
+   Caption         =   "DatabaseProp"
+   ClientHeight    =   4680
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   7005
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   4680
+   ScaleWidth      =   7005
+   Begin VB.TextBox txtSQLString 
+      Height          =   285
+      Left            =   120
+      TabIndex        =   25
+      Top             =   4200
+      Width           =   2535
+   End
+   Begin VB.CheckBox chkHide 
+      Caption         =   "Hide"
+      Height          =   255
+      Left            =   2880
+      TabIndex        =   24
+      Top             =   1200
+      Value           =   1  'Checked
+      Width           =   735
+   End
+   Begin VB.ComboBox cmbSortBy 
+      Height          =   315
+      Left            =   120
+      TabIndex        =   23
+      Top             =   3600
+      Visible         =   0   'False
+      Width           =   2580
+   End
+   Begin VB.ComboBox cmbIDFieldName 
+      Height          =   315
+      Left            =   120
+      TabIndex        =   22
+      Top             =   3000
+      Visible         =   0   'False
+      Width           =   2580
+   End
+   Begin VB.ComboBox cmbFieldName 
+      Height          =   315
+      Left            =   120
+      TabIndex        =   21
+      Top             =   2400
+      Visible         =   0   'False
+      Width           =   2580
+   End
+   Begin VB.Timer Timer1 
+      Interval        =   10
+      Left            =   6720
+      Top             =   3600
+   End
+   Begin VB.ComboBox cmbRecordSource 
+      Height          =   315
+      Left            =   120
+      TabIndex        =   20
+      Top             =   1800
+      Visible         =   0   'False
+      Width           =   2580
+   End
+   Begin VB.CommandButton cmdBrowse 
+      Caption         =   "Browse"
+      Height          =   375
+      Left            =   1920
+      TabIndex        =   19
+      Top             =   600
+      Width           =   855
+   End
+   Begin VB.TextBox txtSortBy 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   11
+      Top             =   3600
+      Width           =   2580
+   End
+   Begin VB.TextBox txtPassword 
+      Height          =   330
+      IMEMode         =   3  'DISABLE
+      Left            =   120
+      PasswordChar    =   "*"
+      TabIndex        =   9
+      Top             =   1200
+      Width           =   2580
+   End
+   Begin VB.TextBox txtIDFieldName 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   7
+      Top             =   3000
+      Width           =   2580
+   End
+   Begin VB.TextBox txtFieldName 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   5
+      Top             =   2400
+      Width           =   2580
+   End
+   Begin VB.TextBox txtRecordSource 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   3
+      Top             =   1800
+      Width           =   2580
+   End
+   Begin VB.TextBox txtDatabaseName 
+      Height          =   330
+      Left            =   120
+      TabIndex        =   1
+      Top             =   600
+      Width           =   1740
+   End
+   Begin VB.Label Label2 
+      BackStyle       =   0  'Transparent
+      Caption         =   $"DatabaseProp.pgx":0000
+      Height          =   615
+      Left            =   2880
+      TabIndex        =   27
+      Top             =   4080
+      Width           =   3975
+   End
+   Begin VB.Label Label1 
+      Caption         =   "SQL String"
+      Height          =   255
+      Left            =   120
+      TabIndex        =   26
+      Top             =   3960
+      Width           =   1935
+   End
+   Begin VB.Label Label6 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The following properties are associated with the Database."
+      Height          =   255
+      Left            =   120
+      TabIndex        =   18
+      Top             =   120
+      Width           =   6255
+   End
+   Begin VB.Label Label5 
+      BackStyle       =   0  'Transparent
+      Caption         =   "SortBy is the name of the Field within the Table to sort by in alphabetic order."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   17
+      Top             =   3600
+      Width           =   3975
+   End
+   Begin VB.Label lblIDFieldNameC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "IDFieldName is the name of the Primary Key Field on the Table. This field must be numeric."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   16
+      Top             =   3000
+      Width           =   3855
+   End
+   Begin VB.Label lblFieldNameC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "FieldName is the name of the Field within the Table that will be listed on the ListBoxes."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   15
+      Top             =   2400
+      Width           =   3855
+   End
+   Begin VB.Label lblPasswordC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "The Password property is only required if your database is password protected."
+      Height          =   495
+      Left            =   3720
+      TabIndex        =   14
+      Top             =   1200
+      Width           =   3135
+   End
+   Begin VB.Label lblRecordSourceC 
+      BackStyle       =   0  'Transparent
+      Caption         =   "RecordeSource is the name of the Table within the Database to which the control will connect."
+      Height          =   495
+      Left            =   2880
+      TabIndex        =   13
+      Top             =   1800
+      Width           =   3855
+   End
+   Begin VB.Label lblDatabaseNameC 
+      BackStyle       =   0  'Transparent
+      Caption         =   $"DatabaseProp.pgx":008A
+      Height          =   615
+      Left            =   2880
+      TabIndex        =   12
+      Top             =   480
+      Width           =   3855
+   End
+   Begin VB.Label lblSortBy 
+      Caption         =   "SortBy:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   10
+      Top             =   3360
+      Width           =   780
+   End
+   Begin VB.Label lblPassword 
+      Caption         =   "Password:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   8
+      Top             =   960
+      Width           =   1020
+   End
+   Begin VB.Label lblIDFieldName 
+      Caption         =   "IDFieldName:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   6
+      Top             =   2760
+      Width           =   1125
+   End
+   Begin VB.Label lblFieldName 
+      Caption         =   "FieldName:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   4
+      Top             =   2160
+      Width           =   885
+   End
+   Begin VB.Label lblRecordSource 
+      Caption         =   "RecordSource:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   2
+      Top             =   1560
+      Width           =   1260
+   End
+   Begin VB.Label lblDatabaseName 
+      Caption         =   "DatabaseName:"
+      Height          =   240
+      Left            =   120
+      TabIndex        =   0
+      Top             =   360
+      Width           =   1380
+   End
+End
+Attribute VB_Name = "DatabaseProp"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Dim strPassword As String
+
+Private Sub PropertyPage_ApplyChanges()
+    SelectedControls(0).SortBy = txtSortBy.Text
+    SelectedControls(0).Password = txtPassword.Text
+    SelectedControls(0).IDFieldName = txtIDFieldName.Text
+    SelectedControls(0).FieldName = txtFieldName.Text
+    SelectedControls(0).RecordSource = txtRecordSource.Text
+    SelectedControls(0).DataBaseName = txtDatabaseName.Text
+    SelectedControls(0).SQLString = txtSQLString.Text
+End Sub
+
+Private Sub PropertyPage_SelectionChanged()
+    txtSortBy.Text = SelectedControls(0).SortBy
+    txtPassword.Text = SelectedControls(0).Password
+    txtIDFieldName.Text = SelectedControls(0).IDFieldName
+    txtFieldName.Text = SelectedControls(0).FieldName
+    txtRecordSource.Text = SelectedControls(0).RecordSource
+    txtDatabaseName.Text = SelectedControls(0).DataBaseName
+    txtSQLString.Text = SelectedControls(0).SQLString
+    
+End Sub
+
+'===================================================
+'=========== Get Database Name =====================
+'===================================================
+
+Private Sub txtDatabaseName_Change()
+    Changed = True
+    
+    Call subAddItmsCombo1
+    
+End Sub
+
+Private Sub cmdBrowse_Click()
+    Dim intClientName As String
+    Dim intDirPath As String
+    Dim intFullPath As String
+    Dim intDefExt As String
+    Dim intExtDescr As String
+    Dim strFilePath As String
+    Dim intWshShell As Variant
+    
+    intDefExt = "*.mdb"
+    intExtDescr = "Access Database (*.mdb)|*.mdb|" & _
+                  "All Files (*.*)|*.*"
+    
+    Set intWshShell = CreateObject("Wscript.Shell")
+    intDirPath = intWshShell.SpecialFolders("MyDocuments")
+    intWshShell = ""
+    
+    intClientName = "*.mdb"
+    
+    If (fncGetFileNameToSave( _
+            intExtDescr _
+            , intDefExt _
+            , intDirPath _
+            , "Choose an Access Database file..." _
+            , intClientName)) Then
+        Debug.Print intGetFileNametoSave
+        Debug.Print ShortFilename(AppPath)
+        Debug.Print Replace(intGetFileNametoSave, AppPath, "")
+        
+        strFilePath = intGetFileNametoSave
+        
+        txtDatabaseName.Text = Replace(ShortFilename(strFilePath), AppPath, "")
+        
+    End If
+    
+End Sub
+
+'===================================================
+'=========== Get Database Password =================
+'===================================================
+
+'First, save current password...
+Private Sub txtPassword_GotFocus()
+    strPassword = txtPassword.Text
+    
+End Sub
+
+'Now, check if password has changed...
+Private Sub txtPassword_LostFocus()
+    If (txtPassword.Text <> strPassword) Then
+        Call subAddItmsCombo1
+        
+    End If
+    
+End Sub
+
+'If password changed, enable Apply button...
+Private Sub txtPassword_Change()
+    Changed = True
+    
+End Sub
+
+'This check box was added to give the
+'programmer the privacy to safely type
+'a password even if there is another
+'person over his shoulder. However, it
+'will be possible, if required, to see
+'what password was typed very easily.
+Private Sub chkHide_Click()
+    If (chkHide.Value = 1) Then
+        txtPassword.PasswordChar = "*"
+        
+    Else
+        txtPassword.PasswordChar = ""
+        
+    End If
+    
+End Sub
+
+'===================================================
+'=========== Get Table Name ========================
+'===================================================
+
+'If the Database path and password were
+'correct, a list of all the Tables found
+'on the Database will be added to the ComboBox.
+
+Private Sub cmbRecordSource_Change()
+    If (cmbRecordSource.Text <> txtRecordSource.Text) Then
+        txtRecordSource.Text = cmbRecordSource.Text
+        
+    End If
+    
+End Sub
+
+Private Sub cmbRecordSource_Click()
+    If (txtRecordSource.Text <> cmbRecordSource.Text) Then
+        txtRecordSource.Text = cmbRecordSource.Text
+        
+    End If
+    
+End Sub
+
+Private Sub txtRecordSource_Change()
+    Changed = True
+    If (cmbRecordSource.Text <> txtRecordSource.Text) Then
+        cmbRecordSource.Text = txtRecordSource.Text
+        
+    End If
+    
+    Call subAddItmsCombo2
+    
+End Sub
+
+'===================================================
+'=========== Get Field Name =====================
+'===================================================
+
+'If the Database path, Password and Table
+'name were correctly selected, a list of
+'all the fields found on the selected
+'Table will be added to the ComboBox.
+
+Private Sub cmbFieldName_Change()
+    If (cmbFieldName.Text <> txtFieldName.Text) Then
+        txtFieldName.Text = cmbFieldName.Text
+        
+    End If
+    
+End Sub
+
+Private Sub cmbFieldName_Click()
+    If (cmbFieldName.Text <> txtFieldName.Text) Then
+        txtFieldName.Text = cmbFieldName.Text
+        
+    End If
+    
+End Sub
+
+Private Sub txtFieldName_Change()
+    Changed = True
+    
+    If (cmbFieldName.Text <> txtFieldName.Text) Then
+        cmbFieldName.Text = txtFieldName.Text
+        
+    End If
+    
+End Sub
+
+'===================================================
+'=========== Get Field ID Name =====================
+'===================================================
+
+'If the Database path, Password and Table
+'name were correctly selected, a list of
+'all the fields found on the selected
+'Table will be added to the ComboBox.
+
+Private Sub cmbIDFieldName_Change()
+    If (cmbIDFieldName.Text <> txtIDFieldName.Text) Then
+        txtIDFieldName.Text = cmbIDFieldName.Text
+        
+    End If
+    
+End Sub
+
+Private Sub cmbIDFieldName_Click()
+    If (cmbIDFieldName.Text <> txtIDFieldName.Text) Then
+        txtIDFieldName.Text = cmbIDFieldName.Text
+        
+    End If
+    
+End Sub
+
+Private Sub txtIDFieldName_Change()
+    Changed = True
+    
+    If (cmbIDFieldName.Text <> txtIDFieldName.Text) _
+    And (Len(txtIDFieldName.Text) <> 0) Then
+        cmbIDFieldName.Text = txtIDFieldName.Text
+        
+    Else
+        txtIDFieldName.Text = cmbIDFieldName.Text
+        
+    End If
+    
+End Sub
+
+'===================================================
+'=========== Get Field Name To Sort By =============
+'===================================================
+
+'If the Database path, Password and Table name
+'were correctly selected, a list of all the
+'fields found on the selected Table will be
+'added to the ComboBox.
+Private Sub cmbSortBy_Change()
+    If (txtSortBy.Text <> cmbSortBy.Text) Then
+        txtSortBy.Text = cmbSortBy.Text
+        
+    End If
+    
+End Sub
+
+Private Sub cmbSortBy_Click()
+    If (txtSortBy.Text <> cmbSortBy.Text) Then
+        txtSortBy.Text = cmbSortBy.Text
+        
+    End If
+    
+End Sub
+
+Private Sub txtSortBy_Change()
+    Changed = True
+    
+    If (cmbSortBy.Text <> txtSortBy.Text) Then
+        cmbSortBy.Text = txtSortBy.Text
+        
+    End If
+    
+End Sub
+
+'===================================================
+'================= Get SQL Strig ===================
+'===================================================
+'This is not a required property. If
+'you don't know how to write SQL statements,
+'please, don't mess with it. You may
+'end up loosing data!!
+
+'An example of SQL statement would be:
+'WHERE (ID >= 5) ORDER BY Principal1Name;
+Private Sub txtSQLString_Change()
+    Changed = True
+    
+End Sub
+
+'===================================================
+'=========== Add Dropdown List To Fields ===========
+'===================================================
+
+Private Sub Timer1_Timer()
+    Timer1.Enabled = False
+    
+    Call subAddItmsCombo1
+    
+End Sub
+
+'This sub will access the database and
+'get a list of all the tables found
+'on the selected database and add
+'them to the Table Name ComboBox...
+Private Sub subAddItmsCombo1()
+    Dim prpDB As Database
+    Dim bolTable As Boolean
+    
+    On Error GoTo DataBaseError
+    
+    If (Len(txtDatabaseName.Text) > 0) Then
+        If (fntFileExist(txtDatabaseName.Text)) Then
+            
+            'Connect to Database...
+            Set prpDB = Workspaces(0).OpenDatabase(fntFullOrRelative(txtDatabaseName.Text), True, False, ";pwd=" & txtPassword.Text)
+            
+            If (prpDB.TableDefs.Count > 0) Then
+                cmbRecordSource.Clear
+                
+                'Loop through all Table Definitions to
+                'find out which one is a real Table...
+                For i = 0 To prpDB.TableDefs.Count - 1
+                    'Check if item is a Table...
+                    If (prpDB.TableDefs(i).Attributes = 0) Then
+                        cmbRecordSource.AddItem prpDB.TableDefs(i).Name
+                        bolTable = True
+                    End If
+                    
+                Next i
+                
+            End If
+            
+            'Release computer resources...
+            prpDB.Close
+            Set prpDB = Nothing
+            
+        End If
+    End If
+    
+    'If a connection to the provided Table
+    'could not be set, hide the ComboBoxes...
+    If (bolTable) Then
+        txtRecordSource.Visible = False
+        cmbRecordSource.Visible = True
+        cmbRecordSource.Text = txtRecordSource.Text
+        Call subAddItmsCombo2
+        
+    Else
+        txtRecordSource.Visible = True
+        cmbRecordSource.Visible = False
+        
+        txtFieldName.Visible = True
+        cmbFieldName.Visible = False
+        
+        txtIDFieldName.Visible = True
+        cmbIDFieldName.Visible = False
+        
+        txtSortBy.Visible = True
+        cmbSortBy.Visible = False
+    End If
+    
+    Exit Sub
+    
+DataBaseError:
+    Debug.Print Err.Number
+    Debug.Print Err.Description
+    
+    If (bolTable) Then
+        txtRecordSource.Visible = False
+        cmbRecordSource.Visible = True
+        
+        Call subAddItmsCombo2
+        
+    Else
+        txtRecordSource.Visible = True
+        cmbRecordSource.Visible = False
+        
+        txtFieldName.Visible = True
+        cmbFieldName.Visible = False
+        
+        txtIDFieldName.Visible = True
+        cmbIDFieldName.Visible = False
+        
+        txtSortBy.Visible = True
+        cmbSortBy.Visible = False
+    End If
+    
+End Sub
+
+'This sub will access the database and
+'get a list of all the fields found on
+'the selected Table and add them to the
+'3 remaining ComboBoxes...
+Private Sub subAddItmsCombo2()
+    Dim prpDB As Database
+    Dim prpRS As Recordset
+    Dim bolTable As Boolean
+    Dim strText As String
+    
+    On Error GoTo DataBaseError
+    
+    If (cmbSortBy.Text <> "") Then
+        strText = cmbSortBy.Text
+        
+    End If
+    
+    If (Len(txtRecordSource.Text) > 0) Then
+        
+        'Connect to Database...
+        Set prpDB = Workspaces(0).OpenDatabase(fntFullOrRelative(txtDatabaseName.Text), True, False, ";pwd=" & txtPassword.Text)
+        Set prpRS = prpDB.OpenRecordset(txtRecordSource.Text)
+        
+        cmbFieldName.Clear
+        cmbIDFieldName.Clear
+        cmbSortBy.Clear
+        
+        'Loop through all Fields on the Selected Table
+        'and add them to each of the remaining ComboBoxes...
+        For i = 0 To prpRS.Fields.Count - 1
+            cmbFieldName.AddItem prpRS.Fields(i).Name
+            cmbIDFieldName.AddItem prpRS.Fields(i).Name
+            cmbSortBy.AddItem prpRS.Fields(i).Name
+            
+        Next i
+        
+        cmbFieldName.Text = txtFieldName.Text
+        
+        'If there was no Field previously selected...
+        If (Len(txtIDFieldName.Text) = 0) Then
+            'The Field ID Name is supposed to be
+            'a Primary Key Field. The following
+            'loop will search for a Primary Key
+            'Field on the Selected Table. If one
+            'is found, it will be selected.
+            For i = 0 To prpDB.TableDefs(txtRecordSource.Text).Indexes.Count - 1
+                bolIsPrimary = prpDB.TableDefs(txtRecordSource.Text).Indexes(i).Primary
+                If (bolIsPrimary) Then
+                    txtPrimaryName = Replace(prpDB.TableDefs(txtRecordSource.Text).Indexes(i).Fields, "+", "")
+                    
+                    'One of the requirements for the ID
+                    'Field is that it is a Primary Key
+                    'field. However, there is another
+                    'requirement. The Primary Key field
+                    'must be a Numeric field. If both
+                    'requirements are fulfilled, the
+                    'field will be automatically selected.
+                    If (prpRS.Fields(txtPrimaryName).Type = 4) Then
+                        cmbIDFieldName.Text = Replace(prpDB.TableDefs(txtRecordSource.Text).Indexes(i).Fields, "+", "")
+                    
+                    Else
+                        'If the Primary Key is not numeric,
+                        'search for any numeric Field and
+                        'select it by Default...
+                        For j = 0 To prpRS.Fields.Count - 1
+                            If (prpRS.Fields(j).Type = 4) Then
+                                cmbIDFieldName.Text = prpRS.Fields(j).Name
+                                Exit For
+                            End If
+                        Next j
+                    End If
+                    Exit For
+                End If
+            Next i
+            
+        Else
+            cmbIDFieldName.Text = txtIDFieldName.Text
+        End If
+        
+        'Release computer resources...
+        prpRS.Close
+        prpDB.Close
+        Set prpRS = Nothing
+        Set prpDB = Nothing
+        
+        txtFieldName.Visible = False
+        cmbFieldName.Visible = True
+        
+        txtIDFieldName.Visible = False
+        cmbIDFieldName.Visible = True
+        
+        txtSortBy.Visible = False
+        cmbSortBy.Visible = True
+        
+    Else
+        txtFieldName.Visible = True
+        cmbFieldName.Visible = False
+        
+        txtIDFieldName.Visible = True
+        cmbIDFieldName.Visible = False
+        
+        txtSortBy.Visible = True
+        cmbSortBy.Visible = False
+        
+    End If
+    
+    cmbSortBy.Text = strText
+    
+    Exit Sub
+    
+DataBaseError:
+    Debug.Print "Combo2"
+    Debug.Print Err.Number
+    Debug.Print Err.Description
+        
+    txtFieldName.Visible = True
+    cmbFieldName.Visible = False
+    
+    txtIDFieldName.Visible = True
+    cmbIDFieldName.Visible = False
+    
+    txtSortBy.Visible = True
+    cmbSortBy.Visible = False
+    
+End Sub
